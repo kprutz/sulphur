@@ -1,5 +1,7 @@
+privatefile.txt
+
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__/gitignore
 *.py[cod]
 *$py.class
 
@@ -25,6 +27,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+/node_modules
+/packages
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
