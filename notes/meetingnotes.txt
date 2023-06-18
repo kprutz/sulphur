@@ -1,0 +1,72 @@
+
+Notes from meetings
+
+For sulphur sensor:
+
+raw pm2.5 - over 35 avg in 24 hours needs change, over 12 avg in a year
+ - epa looks at micrograms per cubic meter
+- how many days are over 35
+
+
+https://www.epa.gov/criteria-air-pollutants/naaqs-table
+
+PM2.5 - then PM10, NOX - then other toxins
+
+Sassol is a bad one
+
+
+FOR THE MEETING IN 2 WEEKS - June 4
+
+TODO: - make a working doc for this
+Get report of air emissions for last 2 weeks (FROM MEETING DAY COMING UP) so Cindy can say this is what was in YOUR AIR. Chart it and send to Cindy
+    - try purple air data viz library
+    - use colab
+
+
+TODO: - make a working doc for this
+What is permitted?
+ - get AIs from Sarah
+ - used LDEQ docs
+ - look at the 4 risk by air toxins (carbon tetrachloride, ethylene oxide, formaldehyde, other)
+
+We have the 2016-2021 data of what these sites all reported.
+We want to chart what these sites were permitted for during those years as well as 2022/2023 if documents are available.
+
+Sarah will figure out what permits are actually useful and where to look
+
+
+
+Try to scrape all the addresses / coordinates for factories — Cindy has someone looking into this
+- yellow highlights are within a 15 mile radius
+
+
+
+
+
+
+June 13:
+
+Air Quality -> Enforcement -> Legal —> all docs with our AIs —> convert pdf to text —> upload to db —> search db for keywords (hearing)
+
+      “notice of hearing”
+      “proposed emissions”
+      annual report
+
+Email alerts + spreadsheet of alerts WHEN
+  - new permit uploaded, application submitted, application pending
+  - 3271, 1255
+  - enforcement -> “permit renewal” OR “annual compliance certification” OR “Title V”
+
+
+Make colab that connects to database for searching by Cindy/Team
+
+
+Compliance -> Warning Letter
+
+
+
+
+Health and Environment summit in October —
+ - Death rate in calcasieu parish after this naphtha tank fire — over the years, might see rates of hospitalization increase. Not data I’d be able to get access to — FUTURE PROJECT ONLY
+
+
