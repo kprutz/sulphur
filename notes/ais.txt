@@ -1,0 +1,46 @@
+AI_NAME AI_NUMBER
+
+1  Bio-Lab Inc, A KIK Custom Product Company
+   26073
+
+2  Calcasieu Refining Co - Lake Charles Crude Oil Refinery
+   3585
+
+3  Citgo Petroleum Corp - Lake Charles Manufacturing Complex
+   1250
+
+4  Eagle US 2 LLC - Lake Charles Complex
+   1255
+
+5  Entergy Louisiana LLC - Roy S Nelson Plant
+   19588
+
+6  Firestone Polymers LLC - Lake Charles Facility
+   1244
+
+7  Indorama Ventures Olefins LLC - Lake Charles Facility
+   5337
+
+8  Lotte Chemical USA Corp
+   195519
+
+9  Louisiana Pigment Co LP - Titanium Dioxide Plant
+    11496
+
+10  Phillips 66 Co - Lake Charles Refinery
+   2538
+
+11  Phillips 66 Co - Westlake Petroleum Product Terminal
+   16996
+
+12  Sasol North America Inc - Lake Charles Chemical Complex
+   3271
+
+13  Westlake Petrochemicals LLC - Poly III
+   27518
+
+14  Westlake Polymers LLC - Polyethylene I & II Plants
+   9061
+
+15  Axiall LLC - Westlake Lake Charles North
+   4013
