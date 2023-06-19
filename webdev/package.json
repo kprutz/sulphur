@@ -47,7 +47,7 @@
     "release": "semantic-release",
     "release:dry-run": "semantic-release --dry-run",
     "pre-commit": "lint-staged",
-    "postinstall": "husky install",
+    "postinstall": "cd .. && husky install webdev/.husky",
     "eject": "react-scripts eject"
   },
   "browserslist": {
