@@ -103,7 +103,6 @@
     "eslint-plugin-react": "^7.29.3",
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-plugin-storybook": "^0.5.7",
-    "husky": "7.0.4",
     "lint-staged": "12.3.5",
     "msw": "^0.39.2",
     "postcss-scss": "4.0.3",
