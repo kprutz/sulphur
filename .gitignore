@@ -1,4 +1,5 @@
 privatefile.txt
+cypress/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/gitignore
@@ -27,7 +28,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-/node_modules
+webdev/node_modules/
 /packages
 
 # PyInstaller
