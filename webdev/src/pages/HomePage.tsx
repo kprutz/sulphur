@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import 'App.css'
-import { PostContainer } from 'features/posts'
+import { SensorsContainer } from 'features/sensors'
 import TitleTypography from 'libs/ui/components/TitleTypography'
 
 const HomePage = () => {
@@ -10,8 +10,7 @@ const HomePage = () => {
 
   return (
     <>
-      <TitleTypography title={t('home.title')} />
-      <PostContainer />
+       <SensorsContainer />
     </>
   )
 }

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { rest } from 'msw'
 
 import Env from 'config/Env'

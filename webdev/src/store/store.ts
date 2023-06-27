@@ -6,6 +6,7 @@ import logger from 'redux-logger'
 
 import { Env } from 'config/Env'
 import postsReducer from 'features/posts/store/posts.slice'
+import sensorsReducer from 'features/sensors/store/sensors.slice'
 import { rootSaga } from 'store/rootSaga'
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
@@ -19,8 +20,9 @@ const makeStore = () => {
 
   const store = configureStore({
     reducer: {
-      posts: postsReducer,
       router: routerReducer,
+      posts: postsReducer,
+      sensors: sensorsReducer,
     },
     devTools: Env.isDev(),
     middleware: getDefaultMiddleware =>

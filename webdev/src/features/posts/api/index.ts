@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Env } from 'config/Env'
 import { Post } from 'features/posts/types'
 import makeApi from "libs/core/configureAxios";

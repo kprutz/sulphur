@@ -43,7 +43,6 @@ export const initializeDb = () => {
   Object.entries(db).forEach(([key, model]) => {
     const dataEntries = database[key]
     if (dataEntries) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       dataEntries?.forEach((entry: Record<string, any>) => {
         model.create(entry)
       })
