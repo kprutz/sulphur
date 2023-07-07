@@ -26,7 +26,7 @@ router = routers.DefaultRouter()
 urlpatterns += [
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^api/', include(router.urls)),
-    path('sensors', SensorsViewSet.as_view({'get': 'getSensorsData'}), name="purple_sensors_view_set"),
+    path('sensors', SensorsViewSet.as_view({'get': 'getSensorsData', 'post': 'runCronJob'}), name="purple_sensors_view_set"),
 ]
 
 if settings.DEBUG:

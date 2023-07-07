@@ -20,10 +20,18 @@ export const SensorsContainer = () => {
   useEffect(() => {
     fetchAllSensors(SENSOR_IDS)
   }, [fetchAllSensors])
+
+  const data = sensors[SENSOR_IDS[0]] ?? []
+
   return (
     <>
-      <Container maxWidth="xs">
-        {!!Object.keys(sensors).length && <Graph data={sensors[SENSOR_IDS[0]]} />}
+      <Container>
+        <div><h2>Purple Air - PM2.5 for the last week</h2></div>
+        {!!Object.keys(sensors).length && <Graph data={data} />}
+      </Container>
+      <Container>
+        <div><h2>Auto-complainer</h2></div>
+        <div><h3>Last cron job run: </h3><span>TODO</span></div>
       </Container>
     </>
   )

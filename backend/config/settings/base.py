@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework_swagger',
     'django_extensions',
-
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -141,3 +141,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Cron jobs
+# If changed, re-run 'python manage.py crontab add'
+
+CRONJOBS = [
+    ('0 9 * * *', 'sensors.cron.auto_complainer')  # run everyday at 9am
+]

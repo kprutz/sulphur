@@ -10,12 +10,14 @@ type LineChartProps = {
   width: number;
   height: number;
   data: Datapoint[];
+  isDate: boolean;
 };
 
 export const LineChart = ({
   width,
   height,
   data,
+  isDate,
 }: LineChartProps) => {
   const axesRef = useRef(null);
   const boundsWidth = width - MARGIN.right - MARGIN.left;
@@ -26,7 +28,16 @@ export const LineChart = ({
   }, [data, height]);
 
   const xScale = useMemo(() => {
-    return d3.scaleLinear().domain([0, 10]).range([0, boundsWidth]);
+    if(isDate) {
+      return d3.scaleTime()  
+        .domain([
+          new Date(data[0].x * 1000),
+          new Date(data[data.length-1].x * 1000)])
+        .range([ 0, boundsWidth ]);
+    }
+    return d3.scaleLinear()
+      .domain([data[0].x, data[data.length-1].x])
+      .range([0, boundsWidth]);
   }, [data, width]);
 
   // Render the X and Y axis using d3.js, not react
@@ -34,7 +45,7 @@ export const LineChart = ({
     const svgElement = d3.select(axesRef.current);
     svgElement.selectAll("*").remove();
 
-    const xAxisGenerator = d3.axisBottom(xScale);
+    let xAxisGenerator = d3.axisBottom(xScale);
     svgElement
       .append("g")
       .attr("transform", "translate(0," + boundsHeight + ")")
@@ -46,7 +57,7 @@ export const LineChart = ({
 
   const lineBuilder = d3
     .line<Datapoint>()
-    .x((d) => xScale(d.x))
+    .x((d) => isDate ? xScale(new Date(d.x * 1000)) : xScale(d.x))
     .y((d) => yScale(d.y));
   const linePath = lineBuilder(data);
 

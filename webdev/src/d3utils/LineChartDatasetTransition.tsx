@@ -7,6 +7,7 @@ type LineChartDatasetTransitionProps = {
   width: number;
   height: number;
   data: Datapoint[];
+  isDate: boolean;
 };
 
 const buttonStyle = {
@@ -22,7 +23,8 @@ const buttonStyle = {
 export const LineChartDatasetTransition = ({
   width,
   height,
-  data
+  data,
+  isDate,
 }: LineChartDatasetTransitionProps) => {
   // const [selectedGroup, setSelectedGroup] = useState<"melanie" | "yan">(
   //   "melanie"
@@ -34,6 +36,7 @@ export const LineChartDatasetTransition = ({
         width={width}
         height={height - BUTTONS_HEIGHT}
         data={data}
+        isDate={isDate}
       />
     </div>
   );
