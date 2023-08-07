@@ -15,11 +15,12 @@ const SENSOR_IDS = [145788]
 // ]
 
 export const SensorsContainer = () => {
-  const { sensors, fetchAllSensors } = useSensorsService()
+  const { sensors, cronMetadata, fetchAllSensors, runCronJob, fetchCronMetadata } = useSensorsService()
 
   useEffect(() => {
-    fetchAllSensors(SENSOR_IDS)
-  }, [fetchAllSensors])
+    fetchAllSensors(SENSOR_IDS),
+    fetchCronMetadata()
+  }, [fetchAllSensors, fetchCronMetadata])
 
   const data = sensors[SENSOR_IDS[0]] ?? []
 
@@ -31,7 +32,8 @@ export const SensorsContainer = () => {
       </Container>
       <Container>
         <div><h2>Auto-complainer</h2></div>
-        <div><h3>Last cron job run: </h3><span>TODO</span></div>
+        <button onClick={runCronJob}>Run cron job</button>
+        <div><h3>Last cron job run: </h3><span>{cronMetadata.lastComplainerRun}</span></div>
       </Container>
     </>
   )

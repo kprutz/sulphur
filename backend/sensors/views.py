@@ -16,12 +16,18 @@ class SensorsViewSet(GenericViewSet):
       sensor_indices = request.GET.get('ids').split(',')
       data = {}
       for index in sensor_indices:
-          sensor_data = PurpleUtils.getSensorHistory_pastWeek(index)
+          sensor_data = PurpleUtils.getSensorHistoryForDays(index, 3)
+          if not sensor_data:
+              return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
           sensor_data = sorted(sensor_data)
-          data[index] = [{'timestamp': +s[0], 'pm25': s[1]} for s in sensor_data]
+          data[index] = [{'timestamp': +s[0], 'pm25': s[1], 'pm25b': s[2], 'pm25_aqi': s[3]} for s in sensor_data]
       return Response(data, status=status.HTTP_200_OK)
 
   @action(methods=['get'], detail=False)
-  def runCronJob(self):
-      Complainer.complain()
+  def runCronJob(self, request):
+      Complainer().complain()
       return Response({}, status=status.HTTP_200_OK)
+
+  @action(methods=['get'], detail=False)
+  def getCronMetadata(self, request):
+      return Response({'lastComplainerRun': Sensors.objects.last().last_complainer_run}, status=status.HTTP_200_OK)

@@ -16,7 +16,7 @@ export const Graph = (props: GraphProps) => {
       <LineChartDatasetTransition
         width={800}
         height={300}
-        data={props.data.map(d => ({x: d.timestamp, y: d.pm25}) as Datapoint)}
+        data={props.data.map(d => ({x: d.timestamp, y: d.pm25_aqi}) as Datapoint)}
         isDate={true} />
     </>
   )
