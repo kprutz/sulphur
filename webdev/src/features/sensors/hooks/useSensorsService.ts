@@ -1,15 +1,15 @@
 import { useCallback } from 'react'
 
-import { sensorsActions, selectSensors, selectCronMetadata } from 'features/sensors/store'
-import { Sensors, CronMetadata } from 'features/sensors/types'
+import { sensorsActions, selectSensors, selectComplaints } from 'features/sensors/store'
+import { Sensors, Complaint } from 'features/sensors/types'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 
 export type SensorsServiceOperators = {
   sensors: Sensors
-  cronMetadata: CronMetadata
+  complaints: Complaint[]
   fetchAllSensors: (ids: number[]) => void
   runCronJob: () => void
-  fetchCronMetadata: () => void
+  listComplaints: () => void
 }
 
 
@@ -18,7 +18,7 @@ export const useSensorsService = (): Readonly<SensorsServiceOperators> => {
 
   return {
     sensors: useAppSelector(selectSensors),
-    cronMetadata: useAppSelector(selectCronMetadata),
+    complaints: useAppSelector(selectComplaints),
 
     fetchAllSensors: useCallback((ids) => {
       dispatch(sensorsActions.fetchAll(ids))
@@ -29,8 +29,8 @@ export const useSensorsService = (): Readonly<SensorsServiceOperators> => {
     }, [dispatch]),
 
 
-    fetchCronMetadata: useCallback(() => {
-      dispatch(sensorsActions.fetchCronMetadata())
+    listComplaints: useCallback(() => {
+      dispatch(sensorsActions.listComplaints())
     }, [dispatch]),
   }
 }

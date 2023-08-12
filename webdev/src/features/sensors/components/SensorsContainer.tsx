@@ -15,14 +15,34 @@ const SENSOR_IDS = [145788]
 // ]
 
 export const SensorsContainer = () => {
-  const { sensors, cronMetadata, fetchAllSensors, runCronJob, fetchCronMetadata } = useSensorsService()
+  const { sensors, complaints, fetchAllSensors, runCronJob, listComplaints } = useSensorsService()
 
   useEffect(() => {
     fetchAllSensors(SENSOR_IDS),
-    fetchCronMetadata()
-  }, [fetchAllSensors, fetchCronMetadata])
+    listComplaints()
+  }, [fetchAllSensors, listComplaints])
 
-  const data = sensors[SENSOR_IDS[0]] ?? []
+  const sensor = sensors[SENSOR_IDS[0]] ?? []
+  const {data} = sensor
+
+  const renderComplaints = () => (
+    <table>
+      <tr>
+        <th>Sensor index</th>
+        <th>Date filed</th>
+        <th>Was filed from a manual run?</th>
+        <th>Submission Data</th>
+      </tr>
+      {complaints.map(c => (
+        <tr>
+          <td>{c.sensorIndex}</td>
+          <td>{c.fileDate}</td>
+          <td>{c.isManualRun}</td>
+          <td>{c.submissionData}</td>
+        </tr>
+      ))}
+    </table>
+  )
 
   return (
     <>
@@ -31,9 +51,14 @@ export const SensorsContainer = () => {
         {!!Object.keys(sensors).length && <Graph data={data} />}
       </Container>
       <Container>
-        <div><h2>Auto-complainer</h2></div>
+        <h2>Auto-complainer</h2>
+        <h3>Last complainer run:</h3>
+        {sensor.lastComplainerRun  && <div>{new Date(sensor.lastComplainerRun).toLocaleDateString()} --- {new Date(sensor.lastComplainerRun).toTimeString()}</div>}
         <button onClick={runCronJob}>Run cron job</button>
-        <div><h3>Last cron job run: </h3><span>{cronMetadata.lastComplainerRun}</span></div>
+        <div>
+          <h3>Complaints: </h3>
+          {renderComplaints()}
+        </div>
       </Container>
     </>
   )

@@ -7,6 +7,7 @@ from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 
 from sensors.views import SensorsViewSet
+from complaint.views import ComplaintView
 
 schema_view = get_swagger_view(title='Pastebin API')
 
@@ -20,14 +21,14 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter(trailing_slash=False)
+router.register(r'complaints', ComplaintView)
 
 #Browsable API login
 urlpatterns += [
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^api/', include(router.urls)),
-    path('sensors', SensorsViewSet.as_view({'get': 'getSensorsData'}), name="purple_sensors_view_set"),
-    path('sensors/cronmetadata', SensorsViewSet.as_view({'get': 'getCronMetadata'}), name="purple_sensors_view_set"),
+    path('sensors/purple', SensorsViewSet.as_view({'get': 'getSensorsData'}), name="purple_sensors_view_set"),
     path('runcron', SensorsViewSet.as_view({'post': 'runCronJob'}), name="purple_sensors_view_set"),
 ]
 

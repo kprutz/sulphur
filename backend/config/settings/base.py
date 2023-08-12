@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'transcribe',
     'sensors',
     'document',
+    'complaint',
 
     #BASE
     'django.contrib.admin',

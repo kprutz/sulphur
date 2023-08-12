@@ -1,17 +1,17 @@
 // DUCKS pattern
 import { createAction, createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 
-import { CronMetadata, Sensors } from 'features/sensors/types'
+import { Complaint, Sensors } from 'features/sensors/types'
 import type { RootState } from 'store/store'
 
 export interface SensorsState {
   sensors: Sensors
-  cronMetadata: CronMetadata
+  complaints: Complaint[]
 }
 
 const initialState: SensorsState = {
   sensors: [],
-  cronMetadata: {lastComplainerRun: ''}
+  complaints: []
 }
 
 // slice
@@ -22,8 +22,8 @@ export const sensorsSlice = createSlice({
     fetchAllSucceeded(state, action: PayloadAction<Sensors>) {
       state.sensors = action.payload
     },
-    fetchCronMetadataSucceeded(state, action: PayloadAction<CronMetadata>) {
-      state.cronMetadata = action.payload
+    listComplaintsSucceeded(state, action: PayloadAction<Complaint[]>) {
+      state.complaints = action.payload
     },
   },
 })
@@ -33,14 +33,14 @@ export const sensorsActions = {
   fetchAll: createAction<number[]>(`${sensorsSlice.name}/fetchAll`),
   fetchAllSucceeded: sensorsSlice.actions.fetchAllSucceeded,
   runCronJob: createAction(`${sensorsSlice.name}/runcron`),
-  fetchCronMetadata: createAction(`${sensorsSlice.name}/cronmetadata`),
-  fetchCronMetadataSucceeded: sensorsSlice.actions.fetchCronMetadataSucceeded,
+  listComplaints: createAction(`${sensorsSlice.name}/complaints`),
+  listComplaintsSucceeded: sensorsSlice.actions.listComplaintsSucceeded,
 }
 
 // Selectors
 export const selectSensors = (state: RootState) => state.sensors.sensors
 
-export const selectCronMetadata = (state: RootState) => state.sensors.cronMetadata
+export const selectComplaints = (state: RootState) => state.sensors.complaints
 
 // Reducer
 export default sensorsSlice.reducer
