@@ -30,6 +30,11 @@ site_data = {
     "directions_to_site": None,
 }
 
+site_by_angle = {
+    
+}
+
+
 # start_time, end_time as timestamps
 def fileComplaint(incident, dry_run):
     # 'start_timestamp', 'end_timestamp', 'pm25_avg', 'pm25_max'
@@ -45,7 +50,7 @@ def fileComplaint(incident, dry_run):
     minutes_over_limit = math.floor((hours_over_limit - seconds_over_limit / 3600) * 60)
     print('minutes over limit is {}', minutes_over_limit)
     site_data['description'] = '''My Purple Air monitor logged PM2.5* levels over 100 (the level above which the EPA begins cautioning at-risk groups) for {} hours and {} minutes (from {} to {}) on {}. The average PM2.5 AQI value was {}. The air monitor data can be seen at https://map.purpleair.com/1/mAQI/a10/p604800/cC0?select=145788#12.17/30.22823/-93.3634.\n 
-*PM2.5 levels are using the US EPA PM2.5 AQI value'''.format(hours_over_limit, minutes_over_limit, site_data['start_time'], site_data['end_time'], site_data['date'], incident['pm25_avg'])
+*PM2.5 levels are using the US EPA PM2.5 AQI value'''.format(hours_over_limit, 0, site_data['start_time'], site_data['end_time'], site_data['date'], incident['pm25_avg'])
     if dry_run:
         print('')
         print(site_data)

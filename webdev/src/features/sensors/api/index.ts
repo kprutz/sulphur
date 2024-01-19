@@ -2,7 +2,8 @@ import { Env } from 'config/Env'
 import { Complaint, Sensor } from 'features/sensors/types'
 import makeApi from "libs/core/configureAxios";
 
-const api = makeApi("http://localhost:8000");
+const prod_address = "" // "http://50.17.131.74"
+const api = makeApi(prod_address || "http://localhost:8000");
 
 const SENSORS_BASE_URL = `/sensors/purple`
 const COMPLAINTS_URL = `/api/complaints`

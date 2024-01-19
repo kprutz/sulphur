@@ -1,0 +1,4 @@
+
+Start nginx (ssh-ed in)
+
+sudo systemctl start nginx

@@ -87,6 +87,7 @@ USE_TZ = True
 
 
 ALLOWED_HOSTS = [
+    '50.17.131.74',  # EC2 instance!
     'localhost',
     'localhost:3000',
     '127.0.0.1'
